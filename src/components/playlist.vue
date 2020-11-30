@@ -2,48 +2,55 @@
     <v-container>
       <v-row>
         <v-col>
-          <v-card
-              class="mx-auto"
-              max-width="400"
-          >
-            <v-img
-                class="white--text align-end"
-                height="200px"
-                :src="musicList[countMusic].photo"
-            >
-            </v-img>
-            <v-container>
-              <v-row>
-                <v-col  sm="3">
-                  <v-btn outlined icon class="ma-2" @click="play()">
-                    <v-icon @click="play" >mdi-play</v-icon>
-                  </v-btn>
-                  <v-btn outlined icon class="ma-2" @click="stop()">
-                    <v-icon>mdi-pause</v-icon>
-                  </v-btn>
-                </v-col>
-                <v-col sm="6"  >
-                  <v-card-title>{{ musicList[countMusic].chanteur}}</v-card-title>
-                  <v-card-subtitle>{{musicList[countMusic].name}}</v-card-subtitle>
-                </v-col>
-                <v-col sm="3">
-                  <v-btn outlined icon class="ma-2" @click="next()">
-                    <v-icon>mdi-skip-next</v-icon>
-                  </v-btn>
-                  <v-btn outlined icon class="ma-2" @click="prec()">
-                    <v-icon>mdi-skip-previous</v-icon>
-                  </v-btn>
-                </v-col>
-              </v-row>
-            </v-container>
-            <v-card-actions>
-              <vuetify-audio style="width: 100%" v-model="audio" color="success" ></vuetify-audio>
-            </v-card-actions>
-            <div>
+          <v-card  class="mx-auto"    max-width="400">
+            <v-img  height="200px"  :src="musicList[countMusic].photo"/>
 
-            </div>
+
           </v-card>
         </v-col>
+<!--        <v-col>-->
+<!--          <v-card-->
+<!--              class="mx-auto"-->
+<!--              max-width="400"-->
+<!--          >-->
+<!--            <v-img-->
+<!--                class="white&#45;&#45;text align-end"-->
+<!--                height="200px"-->
+<!--                :src="musicList[countMusic].photo"-->
+<!--            >-->
+<!--            </v-img>-->
+<!--            <v-container>-->
+<!--              <v-row>-->
+<!--                <v-col  sm="3">-->
+<!--                  <v-btn outlined icon class="ma-2" @click="play()">-->
+<!--                    <v-icon @click="play" >mdi-play</v-icon>-->
+<!--                  </v-btn>-->
+<!--                  <v-btn outlined icon class="ma-2" @click="stop()">-->
+<!--                    <v-icon>mdi-pause</v-icon>-->
+<!--                  </v-btn>-->
+<!--                </v-col>-->
+<!--                <v-col sm="6"  >-->
+<!--                  <v-card-title>{{ musicList[countMusic].chanteur}}</v-card-title>-->
+<!--                  <v-card-subtitle>{{musicList[countMusic].name}}</v-card-subtitle>-->
+<!--                </v-col>-->
+<!--                <v-col sm="3">-->
+<!--                  <v-btn outlined icon class="ma-2" @click="next()">-->
+<!--                    <v-icon>mdi-skip-next</v-icon>-->
+<!--                  </v-btn>-->
+<!--                  <v-btn outlined icon class="ma-2" @click="prec()">-->
+<!--                    <v-icon>mdi-skip-previous</v-icon>-->
+<!--                  </v-btn>-->
+<!--                </v-col>-->
+<!--              </v-row>-->
+<!--            </v-container>-->
+<!--            <v-card-actions>-->
+<!--              <vuetify-audio style="width: 100%" v-model="audio" color="success" ></vuetify-audio>-->
+<!--            </v-card-actions>-->
+<!--            <div>-->
+
+<!--            </div>-->
+<!--          </v-card>-->
+<!--        </v-col>-->
         <v-col>
           <v-card
               style=" max-width:400px"
@@ -232,23 +239,20 @@ export default {
       this.musicList = rep.data;
     },
     play() {
-
       this.audio =  new Audio (this.musicList[this.countMusic].lien);
       this.audio.play();
     },
     playMusic(id) {
-
       this.countMusic = id;
       this.audio =  new Audio (this.musicList[this.countMusic].lien);
       this.audio.play();
     },
     stop() {
       this.audio.pause();
-
       },
 
     next() {
-      this.audio.pause();
+      this.stop();
       this.countMusic = this.countMusic + 1;
       this.play();
     },
