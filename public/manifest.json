@@ -1,0 +1,24 @@
+{
+  "manifest_version": 1,
+  "version": "1.0.0",
+  "name": "Playlist App",
+  "short_name": "playList-app",
+  "description": "Simple playList web application",
+  "default_locale": "en",
+  "icons": [
+    {
+      "src": "/icons/galaxy-s6-icons-music-png-icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/music-256-256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#121738",
+  "theme_color": "#d17c78"
+}
